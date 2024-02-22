@@ -1,7 +1,7 @@
 <template>
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <img class="mx-auto h-10 w-auto" src="/KMITL_PCC.png" alt="accpunt">
+    <img class="mx-auto h-10 w-auto" src="/public/KMITL_PCC.png" alt="accpunt">
     <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">เข้าสู่ระบบ</h2>
   </div>
 
@@ -24,7 +24,9 @@
       </div>
 
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">เข้าสู่ระบบ</button>
+        <button 
+        onclick="Login()"
+        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">เข้าสู่ระบบ</button>
       </div>
     </form>
 
@@ -47,6 +49,11 @@ export default {
             
         }
     },
+    methods:{
+      Login(){
+        this.$router.push('/dashboard')
+      }
+    }
 };
 </script>
     

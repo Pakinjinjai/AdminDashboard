@@ -1,32 +1,26 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
+import TableList from '../views/TableList.vue'
 
-const routes = [
-    {
-        path: '/',
-        name:'',
-        component: () => import('../views/router-template.vue'),
-        children: [
-            {
-                path: "/login",
-                name: "login",
-                component: () => import('../views/Login/login.vue'),
-            },
-            {
-                path: "/register",
-                name: "register",
-                component: () => import('../views/Register/register.vue'),
-            },
-            {
-                path: "/dashboard",
-                name: "dashboard",
-                component: () => import('../views/Dashboard/dashboard.vue'),
-            },
-        ]
-    }
-]
 const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
-  });
-  
-  export default router;
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/',
+			component: TableList
+		},
+		{
+			path: '/account',
+			component: () => import('../views/Account.vue')
+		},
+		{
+			path:'/login',
+			component: () => import('../views/Login.vue')
+		},
+		{
+			path:'/register',
+			component: () => import('../views/Register.vue')
+		},
+	],
+})
+
+export default router
