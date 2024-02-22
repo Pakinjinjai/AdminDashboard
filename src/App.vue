@@ -2,7 +2,6 @@
 	<div class="app flex">
 		<!-- Sidebar -->
 		<Sidebar />
-
 		<!-- Content -->
 		<router-view class="w-full" />
 	</div>

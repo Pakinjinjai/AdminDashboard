@@ -29,10 +29,6 @@
 				<!-- <span class="material-icons">settings</span> -->
 				<span class="text">เข้าสู่ระบบ</span>
 			</router-link>
-			<router-link to="/register" class="button">
-				<!-- <span class="material-icons">settings</span> -->
-				<span class="text">สมัครสมาชิก</span>
-			</router-link>
 		</div>
 	</aside>
 </template>
