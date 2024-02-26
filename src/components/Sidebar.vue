@@ -77,7 +77,7 @@ const checkAccessToken = (callback) => {
 		callback()
 	} else {
 		console.log("กรุณาเข้าสู่ระบบ")
-		router.push('/login')
+		router.push('/401')
 	}
 }
 
