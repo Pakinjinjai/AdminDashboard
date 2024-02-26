@@ -27,8 +27,7 @@ const accessToken = ref(localStorage.getItem('accessToken'));
 // ฟังก์ชันสำหรับตรวจสอบว่ามี accessToken ใน LocalStorage หรือไม่
 const checkToken = () => {
   if (!accessToken.value) {
-	    // router.push('/login');
-		router.push('/login'); // เพียงแค่เพื่อการตัวอย่างเท่านั้น
+		router.push('/login');
   }
 };
 
