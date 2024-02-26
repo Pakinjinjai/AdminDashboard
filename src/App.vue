@@ -28,6 +28,10 @@ const accessToken = ref(localStorage.getItem('accessToken'));
 const checkToken = () => {
   if (!accessToken.value) {
 		router.push('/login');
+		console.log("กรุณาเข้าสู้ระบบก่อน");
+  }else{
+	    router.push('/');
+		console.log("เข้าสู่ระบบสำเร็จ");
   }
 };
 
