@@ -1,7 +1,7 @@
 <template>
 	<aside :class="`${is_expanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-			<img :src="logoURL" alt="Vue" /> 
+			<img :src="logoURL" alt="Vue" />
 		</div>
 
 		<div class="menu-toggle-wrap">
@@ -12,41 +12,24 @@
 
 		<h3>Menu</h3>
 		<div class="menu">
-			<router-link 
-				to="/" 
-				class="button"
-				@click="checkAccessToken(TableList)"
-				>
+			<router-link to="/" class="button" @click="checkAccessToken(TableList)">
 				<span class="material-icons">favorite</span>
 				<span class="text">ตารางผู้ใช้งาน</span>
 			</router-link>
-			<router-link 
-				to="/account" 
-				class="button"
-				@click="checkAccessToken(Account)"
-				>
+			<router-link to="/account" class="button" @click="checkAccessToken(Account)">
 				<span class="material-icons">account_circle</span>
 				<span class="text">จัดการบัญชี</span>
 			</router-link>
 		</div>
 
 		<div class="space"></div>
-		
+
 		<div class="menu">
-			<router-link 
-				v-if="!hasAccessToken"
-				to="/login" 
-				class="button"
-				>
+			<router-link v-if="!hasAccessToken" to="/login" class="button">
 				<span class="material-icons">keyboard_arrow_right</span>
 				<span class="text">เข้าสู่ระบบ</span>
 			</router-link>
-			<router-link 
-				v-if="hasAccessToken"
-				to="/login"
-				class="button"
-				@click="Logout"
-				>
+			<router-link v-if="hasAccessToken" to="/login" class="button" @click="Logout">
 				<span class="material-icons">keyboard_arrow_left</span>
 				<span class="text">ออกจากระบบ</span>
 			</router-link>
@@ -55,7 +38,7 @@
 </template>
 
 <script setup>
-import { ref,watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from 'vue-router' // เพิ่มการนำเข้า useRouter
 import logoURL from '../assets/Admin.png'
 
@@ -66,8 +49,8 @@ const hasAccessToken = ref(localStorage.getItem("accessToken") !== null)
 
 // กำหนด Watcher เพื่อตรวจสอบการเปลี่ยนแปลงใน LocalStorage
 watch(() => localStorage.getItem("accessToken"), (newValue) => {
-  // อัพเดทค่าของ hasAccessToken เมื่อมีการเปลี่ยนแปลงใน LocalStorage
-  hasAccessToken.value = newValue !== null
+	// อัพเดทค่าของ hasAccessToken เมื่อมีการเปลี่ยนแปลงใน LocalStorage
+	hasAccessToken.value = newValue !== null
 })
 
 //ประกาศตัวแปรตรวจสอบ Token ก็ใช้งานปุ่ม
@@ -92,9 +75,6 @@ const Logout = () => {
 	// ลบ accessToken ที่มีอยู่ใน LocalStorage
 	localStorage.removeItem("accessToken");
 
-	// Refresh หน้าเพื่อให้มั่นใจว่าข้อมูลถูกล้างและสถานะใหม่ถูกโหลดขึ้นมาทันที
-	window.location.reload();
-	
 	// ทำการ redirect ไปยังหน้า /login
 	router.push('/login');
 	console.log("ออกจากระบบสำเร็จ");
@@ -148,12 +128,13 @@ aside {
 
 		.menu-toggle {
 			transition: 0.2s ease-in-out;
+
 			.material-icons {
 				font-size: 2rem;
 				color: var(--light);
 				transition: 0.2s ease-out;
 			}
-			
+
 			&:hover {
 				.material-icons {
 					color: var(--primary);
@@ -163,7 +144,8 @@ aside {
 		}
 	}
 
-	h3, .button .text {
+	h3,
+	.button .text {
 		opacity: 0;
 		transition: opacity 0.3s ease-in-out;
 	}
@@ -191,6 +173,7 @@ aside {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
 			}
+
 			.text {
 				color: var(--light);
 				transition: 0.2s ease-in-out;
@@ -199,7 +182,8 @@ aside {
 			&:hover {
 				background-color: var(--dark-alt);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
@@ -208,15 +192,18 @@ aside {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
+
 			&.button-exact-active {
 				background-color: var(--dark-alt);
 				border-right: 5px solid var(--primary);
 
-				.material-icons, .text {
+				.material-icons,
+				.text {
 					color: var(--primary);
 				}
 			}
@@ -238,13 +225,14 @@ aside {
 
 		.menu-toggle-wrap {
 			top: -3rem;
-			
+
 			.menu-toggle {
 				transform: rotate(-180deg);
 			}
 		}
 
-		h3, .button .text {
+		h3,
+		.button .text {
 			opacity: 1;
 		}
 
