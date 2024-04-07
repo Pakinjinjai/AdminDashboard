@@ -1,21 +1,21 @@
 <template>
   <div class="account-management">
-    <h1>Account Management</h1>
+    <h1>จัดการบัญชี</h1>
     <div v-if="!editing">
-      <p><strong>Username:</strong> {{ username }}</p>
-      <p><strong>Password:</strong> *********</p>
-      <button @click="startEditing" class="edit-button">Edit</button>
+      <p><strong>ชื่อผู้ใช้ :</strong> {{ username }}</p>
+      <p><strong>รหัสผ่าน :</strong> *********</p>
+      <button @click="startEditing" class="edit-button">แก้ไข</button>
     </div>
     <form v-if="editing" @submit.prevent="saveChanges">
-      <label for="new-username">New Username:</label>
+      <label for="new-username">ชื่อผู้ใช้ใหม่ :</label>
       <input type="text" id="new-username" v-model="newUsername" class="input-field"><br>
-      <label for="new-password">New Password:</label>
+      <label for="new-password">รหัสผ่านใหม่ :</label>
       <input type="password" id="new-password" v-model="newPassword" class="input-field"><br>
-      <label for="confirm-password">Confirm New Password:</label>
+      <label for="confirm-password">ยืนยันรหัสผ่าน :</label>
       <input type="password" id="confirm-password" v-model="confirmPassword" class="input-field"><br>
       <div class="button-group">
-        <button type="submit" class="save-button">Save</button>
-        <button @click="cancelEditing" class="cancel-button">Cancel</button>
+        <button type="submit" class="save-button">บันทึก</button>
+        <button @click="cancelEditing" class="cancel-button">ยกเลิก</button>
       </div>
     </form>
   </div>
