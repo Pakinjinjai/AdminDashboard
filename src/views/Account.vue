@@ -22,37 +22,49 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import axios from 'axios';
 
-const username = ref("JohnDoe")
-const password = ref("password") 
-const editing = ref(false)
-const newUsername = ref("")
-const newPassword = ref("")
-const confirmPassword = ref("")
+const username = ref("JohnDoe");
+const password = ref("password");
+const editing = ref(false);
+const newUsername = ref("");
+const newPassword = ref("");
+const confirmPassword = ref("");
+
+const baseURL = "https://health-backend-kp6f.onrender.com/api";
 
 const startEditing = () => {
-  editing.value = true
-}
+  editing.value = true;
+};
 
 const saveChanges = () => {
   if (newPassword.value !== confirmPassword.value) {
-    alert("New passwords do not match.")
-    return
+    alert("รหัสผ่านใหม่ไม่ตรงกัน");
+    return;
   }
 
-  username.value = newUsername.value || username.value
-  password.value = newPassword.value || password.value 
-  alert("Changes saved successfully!")
-  editing.value = false
-}
+  axios.post(baseURL + '/user-update', {
+    username: newUsername.value,
+    password: newPassword.value
+  })
+  .then(response => {
+    console.log(response.data);
+    alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
+    editing.value = false;
+  })
+  .catch(error => {
+    console.error(error);
+    alert("เกิดข้อผิดพลาดขณะบันทึกข้อมูล");
+  });
+};
 
 const cancelEditing = () => {
-  editing.value = false
-  newUsername.value = ""
-  newPassword.value = ""
-  confirmPassword.value = ""
-}
+  editing.value = false;
+  newUsername.value = "";
+  newPassword.value = "";
+  confirmPassword.value = "";
+};
 </script>
 
 <style scoped>
