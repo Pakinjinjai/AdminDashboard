@@ -32,6 +32,7 @@ const newUsername = ref("");
 const newPassword = ref("");
 const confirmPassword = ref("");
 
+// เปลี่ยน baseURL ตามที่ต้องการใช้งาน
 const baseURL = "https://health-backend-kp6f.onrender.com/api";
 
 const startEditing = () => {
@@ -44,7 +45,8 @@ const saveChanges = () => {
     return;
   }
 
-  axios.post(baseURL + '/user-update', {
+  // ส่งข้อมูลผ่าน POST request ไปยัง API ของ Admin
+  axios.post(baseURL + '/upload-image', {
     username: newUsername.value,
     password: newPassword.value
   })
